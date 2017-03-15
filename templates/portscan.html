@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <title>端口扫描</title>
+</head>
+<body>
+
+
+<div id="mainbody">
+  <div style="margin-top:180px;">
+    <div class="container">
+        <form class="form-inline text-center" action="/portscan/" method="POST" onsubmit="GetInfo();return false;">
+        <div class="form-group">
+            {% csrf_token %}
+          <label class="control-label" for="inputurls">ip</label>
+            <input type="text" class="input-lg form-control" value="" id="inputurls" name="ip">
+            <label class="control-label" for="inputurls">参数</label>
+          <input type="text" class="input-lg form-control" value="-T4 -A -v" id="inputurls" name="port">
+          <button type="submit" class="btn btn-lg btn-danger">扫描</button>
+            </div>
+<table width="426" height="84" cellspacing="1" cellpadding="0" border="0" bgcolor="#5C87B2" align="center" id="table3">
+  <tbody>
+
+    <tr bgcolor="#FFFFFF">
+          {%  for i in information %}
+        <p >{{ i }}</p>
+        {% endfor %}
+    </tr>
+
+  </tbody>
+</body>
+</html>
